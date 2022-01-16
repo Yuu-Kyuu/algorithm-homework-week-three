@@ -1,5 +1,11 @@
 package com.algorithm.homework.weekthree.p23;
 
+/**
+ * @author qiuch
+ * 分治，每次从中拆成两半，递归到两个有序列表合并（P21）
+ * Time complexity : O(Nlogk)
+ * Space complexity : O(1)
+ */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) {

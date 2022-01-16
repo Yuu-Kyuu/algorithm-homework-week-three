@@ -2,9 +2,15 @@ package com.algorithm.homework.weekthree.p106;
 
 import java.util.HashMap;
 
+/**
+ * @author qiuch
+ * 参考课堂前序+中序 序列化（P105）
+ * Time complexity : O(n)
+ * Space complexity : O(n)
+ */
 class Solution {
     int[] postOrder;
-    //记住中序遍历数组的下标,不用循环找中序下标
+    //记住中序遍历数组的下标,不用循环找中序root值所在的下标
     HashMap<Integer, Integer> inOrderIndex = new HashMap<>();
 
     public TreeNode buildTree(int[] inorder, int[] postorder) {
@@ -23,6 +29,7 @@ class Solution {
         int rootVal = postOrder[postOrderEnd];
         int inOrderRootIndex = inOrderIndex.get(rootVal);
 
+        //从root值所在的位置分开进行左右子数的递归
         TreeNode node = new TreeNode(rootVal);
         node.left = buildSubTree(inOrderStart, inOrderRootIndex - 1, postOrderStart, postOrderStart + inOrderRootIndex - inOrderStart - 1);
         node.right = buildSubTree(inOrderRootIndex + 1, inOrederEnd, postOrderStart + inOrderRootIndex - inOrderStart, postOrderEnd - 1);
